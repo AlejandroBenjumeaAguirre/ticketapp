@@ -1,4 +1,82 @@
-<form class="login100-form"
+<h2 class="titulo2">Nuevo Usuario</h2>
+
+<form class="register"
+      autocomplete="off"
+      [formGroup]="miFormulario"
+      (ngSubmit)="registro()">
+
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput type="text"
+              formControlName="name"
+              placeholder="Ingresa tu Nombre">
+      </mat-form-field>
+
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>email</mat-label>
+        <input matInput type="email"
+              formControlName="email"
+              placeholder="Ingresa tu email">
+      </mat-form-field>
+
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Nickname</mat-label>
+        <input matInput type="text"
+              formControlName="nickname"
+              placeholder="Ingresa tu Nickname">
+      </mat-form-field>
+
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Telefono</mat-label>
+          <span matPrefix>+1 &nbsp;</span>
+          <input type="tel" matInput
+                 formControlName="phone"
+                 placeholder="555-555-1234">
+          <mat-icon matSuffix>mode_edit</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Grupo</mat-label>
+        <mat-select formControlName="group_id" >
+          <mat-option [value]="">
+            --Seleccionar Grupo--
+          </mat-option>
+          <mat-option *ngFor="let group of groups | objToArryGE " [value]="group.id">
+            {{ group.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Entidad</mat-label>
+        <mat-select formControlName="entity_id">
+          <mat-option [value]="">
+            --Option--
+          </mat-option>
+          <mat-option *ngFor="let entity of entitys | objToArryGE" [value]="entity.id">
+            {{ entity.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput type="password"
+               formControlName="password"
+               placeholder="Ingrese su contraseña">
+      </mat-form-field>
+
+
+      <button mat-raised-button color="primary"
+              class="btn"
+              type="submit"
+              [disabled]="miFormulario.invalid">
+              Registrar
+      </button>
+
+</form>
+
+<!-- <form class="login100-form"
       autocomplete="off"
       [formGroup]="miFormulario"
       (ngSubmit)="registro()">
@@ -90,4 +168,4 @@
     </a>
   </div>
 
-</form>
+</form> -->
